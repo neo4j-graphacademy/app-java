@@ -177,14 +177,14 @@ public class MovieService {
      * @param userId
      * @return List<Movie>
      */
-    // tag::getForActor[]
+    // tag::getForDirector[]
     public List<Map<String,Object>> getForDirector(String directorId, Params params,String userId) {
         // TODO: Get Movies directed by a Person
         // MATCH (:Person {tmdbId: $id})-[:DIRECTED]->(m:Movie)
 
         return AppUtils.process(directedByCoppola, params);
     }
-    // end::getForActor[]
+    // end::getForDirector[]
 
 
     /**
