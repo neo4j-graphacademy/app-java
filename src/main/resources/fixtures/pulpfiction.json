@@ -1,0 +1,95 @@
+{
+  "languages": [
+    "English",
+    " Spanish",
+    " French"
+  ],
+  "year": 1994,
+  "imdbId": "0110912",
+  "directors": [
+    {
+      "bornIn": "Knoxville, Tennessee, USA",
+      "tmdbId": "138",
+      "imdbId": "0000233",
+      "born": "1963-03-27",
+      "name": "Quentin Tarantino",
+      "bio": "Quentin Jerome Tarantino (born March 27, 1963) is an American film director, screenwriter, producer, cinematographer and actor.  In the early 1990s he was an independent filmmaker whose films used nonlinear storylines and aestheticization of violence.  His films have earned him a variety of Academy Award, Golden Globe, BAFTA and Palme d'Or Awards and he has been nominated for Emmy and Grammy Awards.  In 2007, Total Film named him the 12th-greatest director of all time...",
+      "poster": "https://image.tmdb.org/t/p/w440_and_h660_face/1gjcpAa99FAOWGnrUvHEXXsRs7o.jpg",
+      "url": "https://themoviedb.org/person/138"
+    }
+  ],
+  "runtime": 154,
+  "imdbRating": 8.9,
+  "movieId": "296",
+  "countries": [
+    "USA"
+  ],
+  "ratingCount": 324,
+  "imdbVotes": 1268850,
+  "title": "Pulp Fiction",
+  "url": "https://themoviedb.org/movie/680",
+  "actors": [
+    {
+      "bornIn": "London, England, UK",
+      "role": "Pumpkin",
+      "tmdbId": "3129",
+      "imdbId": "0000619",
+      "born": "1961-05-14",
+      "name": "Tim Roth",
+      "bio": "An English film actor.  Notable credits include Reservoir Dogs, Pulp Fiction, Four Rooms, Planet of the Apes, The Incredible Hulk and Rob Roy. \n\nTimothy Simon Roth is an English actor and director.  He made his debut in the television film Made in Britain.  He gained critical acclaim for his role as Myron in The Hit, for which he was nominated for the BAFTA Award for Most Promising Newcomer...",
+      "poster": "https://image.tmdb.org/t/p/w440_and_h660_face/qSizF2i9gz6c6DbAC5RoIq8sVqX.jpg",
+      "url": "https://themoviedb.org/person/3129"
+    },
+    {
+      "bornIn": "Englewood, New Jersey, USA",
+      "role": "Vincent Vega",
+      "tmdbId": "8891",
+      "imdbId": "0000237",
+      "born": "1954-02-18",
+      "name": "John Travolta",
+      "bio": "An American actor, film producer, dancer, and singer.  He first became known in the 1970s, after appearing on the television series Welcome Back, Kotter and starring in the box office successes Saturday Night Fever and Grease.  Travolta's career re-surged in the 1990s, with his role in Pulp Fiction, and he has since continued starring in Hollywood films, including Face/Off, Ladder 49 and Wild Hogs.  Travolta has twice been nominated for the Academy Award for Best Actor...",
+      "poster": "https://image.tmdb.org/t/p/w440_and_h660_face/JSt3skdZpGPJYJixCZqH599WdI.jpg",
+      "url": "https://themoviedb.org/person/8891"
+    },
+    {
+      "role": "Waitress",
+      "tmdbId": "11807",
+      "imdbId": "0522503",
+      "name": "Laura Lovelace",
+      "poster": "https://image.tmdb.org/t/p/w440_and_h660_face/1MLB30laQt2k80i15kdn0X7Zn5U.jpg",
+      "url": "https://themoviedb.org/person/11807"
+    },
+    {
+      "bornIn": "Washington, D.C., USA",
+      "role": "Jules Winnfield",
+      "tmdbId": "2231",
+      "imdbId": "0000168",
+      "born": "1948-12-21",
+      "name": "Samuel L. Jackson",
+      "bio": "An American film and television actor and film producer.  After Jackson became involved with the Civil Rights Movement, he moved on to acting in theater at Morehouse College, and then films.  He had several small roles such as in the film Goodfellas, Def by Temptation, before meeting his mentor, Morgan Freeman, and the director Spike Lee.  After gaining critical acclaim for his role in Jungle Fever in 1991, he appeared in films such as Patriot Games, Amos & Andrew, True Romance and Jurassic Park...",
+      "poster": "https://image.tmdb.org/t/p/w440_and_h660_face/mXN4Gw9tZJVKrLJHde2IcUHmV3P.jpg",
+      "url": "https://themoviedb.org/person/2231"
+    }
+  ],
+  "revenue": 214179088,
+  "tmdbId": "680",
+  "plot": "The lives of two mob hit men, a boxer, a gangster's wife, and a pair of diner bandits intertwine in four tales of violence and redemption.",
+  "genres": [
+    {
+      "name": "Drama"
+    },
+    {
+      "name": "Crime"
+    },
+    {
+      "name": "Comedy"
+    },
+    {
+      "name": "Thriller"
+    }
+  ],
+  "favorite": false,
+  "poster": "https://image.tmdb.org/t/p/w440_and_h660_face/yAaf4ybTENKPicqzsAoW6Emxrag.jpg",
+  "released": "1994-10-14",
+  "budget": 8000000
+}

@@ -1,0 +1,129 @@
+[
+  {
+    "role": "Don Michael Corleone",
+    "plot": "In the midst of trying to legitimize his business dealings in New York and Italy in 1979, aging Mafia don Michael Corleone seeks to avow for his sins while taking a young protégé under his wing.",
+    "released": "1990-12-25",
+    "url": "https://themoviedb.org/movie/242",
+    "year": 1990,
+    "imdbVotes": 256626,
+    "poster": "https://image.tmdb.org/t/p/w440_and_h660_face/1hdm3Axw9LjITbApvAXBbqO58zE.jpg",
+    "countries": [
+      "USA"
+    ],
+    "languages": [
+      "English",
+      " Italian",
+      " German",
+      " Latin"
+    ],
+    "revenue": 136766062,
+    "budget": 54000000,
+    "tmdbId": "242",
+    "imdbRating": 7.6,
+    "title": "Godfather: Part III, The",
+    "movieId": "2023",
+    "imdbId": "0099674",
+    "id": "0099674",
+    "runtime": 162
+  },
+  {
+    "role": "Shylock",
+    "plot": "In 16th century Venice, when a merchant must default on a large loan from an abused Jewish moneylender for a friend with romantic ambitions, the bitterly vengeful creditor demands a gruesome payment instead.",
+    "released": "2005-02-18",
+    "url": "https://themoviedb.org/movie/11162",
+    "year": 2004,
+    "imdbVotes": 29063,
+    "poster": "https://image.tmdb.org/t/p/w440_and_h660_face/sbYUDtqbYtqbqTvmjGBZAeWTinb.jpg",
+    "countries": [
+      "USA",
+      " Italy",
+      " Luxembourg",
+      " UK"
+    ],
+    "languages": [
+      "English"
+    ],
+    "tmdbId": "11162",
+    "imdbRating": 7.1,
+    "title": "Merchant of Venice, The",
+    "movieId": "30850",
+    "imdbId": "0379889",
+    "id": "0379889",
+    "runtime": 131
+  },
+  {
+    "role": "Jack Gramm",
+    "plot": "On the day that a serial killer that he helped put away is supposed to be executed, a noted forensic psychologist and college professor receives a call informing him that he has 88 minutes left to live.",
+    "released": "2008-04-18",
+    "url": "https://themoviedb.org/movie/3489",
+    "year": 2007,
+    "imdbVotes": 64471,
+    "poster": "https://image.tmdb.org/t/p/w440_and_h660_face/8rMiBz8kLMNmQyMbQXL9MPIlyw.jpg",
+    "countries": [
+      "USA",
+      " Germany",
+      " Canada"
+    ],
+    "languages": [
+      "English"
+    ],
+    "revenue": 16930884,
+    "budget": 30000000,
+    "tmdbId": "3489",
+    "imdbRating": 5.9,
+    "title": "88 Minutes",
+    "movieId": "53207",
+    "imdbId": "0411061",
+    "id": "0411061",
+    "runtime": 108
+  },
+  {
+    "role": "Walter Abrams",
+    "plot": "After suffering a career-ending injury, a former college football star aligns himself with one of the most renowned touts in the sports-gambling business.",
+    "released": "2005-10-07",
+    "url": "https://themoviedb.org/movie/9910",
+    "year": 2005,
+    "imdbVotes": 35966,
+    "poster": "https://image.tmdb.org/t/p/w440_and_h660_face/5SedPYdGLrp6LX9C2cWXLx38w1D.jpg",
+    "countries": [
+      "USA"
+    ],
+    "languages": [
+      "English"
+    ],
+    "revenue": 30526509,
+    "budget": 35000000,
+    "tmdbId": "9910",
+    "imdbRating": 6.2,
+    "title": "Two for the Money",
+    "movieId": "38992",
+    "imdbId": "0417217",
+    "id": "0417217",
+    "runtime": 122
+  },
+  {
+    "role": "Will Dormer",
+    "plot": "Two Los Angeles homicide detectives are dispatched to a northern town where the sun doesn't set to investigate the methodical murder of a local teen.",
+    "released": "2002-05-24",
+    "url": "https://themoviedb.org/movie/320",
+    "year": 2002,
+    "imdbVotes": 212725,
+    "poster": "https://image.tmdb.org/t/p/w440_and_h660_face/cwB0t4OHX1Pw1Umzc9jPgzalUpS.jpg",
+    "countries": [
+      "USA",
+      " Canada"
+    ],
+    "languages": [
+      "English"
+    ],
+    "revenue": 113714830,
+    "budget": 46000000,
+    "tmdbId": "320",
+    "imdbRating": 7.2,
+    "title": "Insomnia",
+    "movieId": "5388",
+    "imdbId": "0278504",
+    "id": "0278504",
+    "runtime": 118
+  }
+]

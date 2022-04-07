@@ -1,0 +1,45 @@
+{
+  "actors": [
+    {
+      "name": "Tim Robbins",
+      "tmdbId": "0000209"
+    },
+    {
+      "name": "William Sadler",
+      "tmdbId": "0006669"
+    },
+    {
+      "name": "Bob Gunton",
+      "tmdbId": "0348409"
+    },
+    {
+      "name": "Morgan Freeman",
+      "tmdbId": "0000151"
+    }
+  ],
+  "languages": [
+    "English"
+  ],
+  "plot": "Two imprisoned men bond over a number of years, finding solace and eventual redemption through acts of common decency.",
+  "year": 1994,
+  "genres": [
+    {
+      "link": "/genres/Drama",
+      "name": "Drama"
+    },
+    {
+      "link": "/genres/Crime",
+      "name": "Crime"
+    }
+  ],
+  "directors": [
+    {
+      "name": "Frank Darabont",
+      "tmdbId": "0001104"
+    }
+  ],
+  "imdbRating": 9.3,
+  "tmdbId": "0111161",
+  "title": "Shawshank Redemption, The",
+  "poster": "https://image.tmdb.org/t/p/w440_and_h660_face/5KCVkau1HEl7ZzfPsKAPM0sMiKc.jpg"
+}
