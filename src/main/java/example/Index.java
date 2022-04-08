@@ -141,8 +141,9 @@ private static void showReadTransaction (Driver driver){
                       """,
               Values.parameters("title", "Arthur") // <2>
       ).list(r -> r.get("name").asString());
-  });
       // end::session.readTransaction[]
+  });
+
     }
   }
 
