@@ -19,17 +19,17 @@ class _08_FavoriteFlagTest {
     private static Driver driver;
 
     private static String userId;
-    private static final String email = "graphacademy.flag@neo4j.com";
+    private static final String email = "graphacademy.flag@neo4j.com"; // users get an error since this email already exists, might want to remove or change it before this module
 
     @BeforeAll
     static void initDriver() {
         AppUtils.loadProperties();
         driver = AppUtils.initDriver();
+        if (driver != null) driver.session().writeTransaction(tx -> tx.run("""
+                MATCH (u:User {email: $email}) DETACH DELETE u
+                """, Values.parameters("email", email)));
         var user = new AuthService(driver, AppUtils.getJwtSecret()).register(email, "letmein", email);
         userId = (String)user.get("userId");
-        if (driver != null) driver.session().writeTransaction(tx -> tx.run("""
-                MERGE (u:User {userId: $userId}) SET u.email = $email
-                """, Values.parameters("userId", userId, "email", email)));
     }
 
     @AfterAll

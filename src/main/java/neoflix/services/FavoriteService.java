@@ -47,7 +47,7 @@ public class FavoriteService {
         // TODO: Retrieve a list of movies favorited by the user
         // TODO: Close session
 
-        return AppUtils.process(userFavorites.get(userId),params);
+        return AppUtils.process(userFavorites.getOrDefault(userId, List.of()),params);
     }
     // end::all[]
 

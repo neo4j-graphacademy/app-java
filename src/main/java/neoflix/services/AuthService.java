@@ -2,6 +2,7 @@ package neoflix.services;
 
 import neoflix.AppUtils;
 import neoflix.AuthUtils;
+import neoflix.ValidationException;
 import org.neo4j.driver.Driver;
 
 import java.util.List;
@@ -90,11 +91,11 @@ public class AuthService {
         // TODO: Authenticate the user from the database
         var foundUser = users.stream().filter(u -> u.get("email").equals(email)).findAny();
         if (foundUser.isEmpty())
-            throw new RuntimeException("Cannot retrieve a single record, because this result is empty.");
+            throw new ValidationException("Incorrect email", Map.of("email","Incorrect email"));
         var user = foundUser.get();
         if (!plainPassword.equals(user.get("password")) && 
             !AuthUtils.verifyPassword(plainPassword,(String)user.get("password"))) { // 
-            throw new RuntimeException("Incorrect password");
+            throw new ValidationException("Incorrect password", Map.of("password","Incorrect password"));
         }
         // tag::return[]
         String sub = (String) user.get("userId");
