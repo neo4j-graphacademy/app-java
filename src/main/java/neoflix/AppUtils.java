@@ -16,7 +16,8 @@ import java.util.function.Function;
 public class AppUtils {
     public static void loadProperties() {
         try {
-            System.getProperties().load(AppUtils.class.getResourceAsStream("/application.properties"));
+            var file = AppUtils.class.getResourceAsStream("/application.properties");
+            if (file!=null) System.getProperties().load(file);
         } catch (IOException e) {
             throw new RuntimeException("Error loading application.properties", e);
         }
