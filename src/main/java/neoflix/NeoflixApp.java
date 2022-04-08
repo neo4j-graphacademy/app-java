@@ -34,6 +34,6 @@ public class NeoflixApp {
             response.body(gson.toJson(body));
             response.type("application/json");
         });
-        System.out.printf("Started server at port %d%n", port);
+        System.out.printf("Server listening on http://localhost:%d%n/", port);
     }
 }
