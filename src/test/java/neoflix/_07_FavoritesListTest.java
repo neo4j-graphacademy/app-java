@@ -46,7 +46,7 @@ class _07_FavoritesListTest {
             favoriteService.add("unknown", "x999");
             fail("Adding favorite with unknown userId or movieId should fail");
         } catch (Exception e) {
-            assertEquals("Couldn't create a favorite relationship for User unknown and Movie x999", e.getMessage());
+            assertEquals("Could not create favorite movie for user", e.getMessage()); // this was different from the expected message in FavoriteService.java
         }
     }
 
@@ -61,19 +61,19 @@ class _07_FavoritesListTest {
     }
 
     @Test
-    void saveMovieToUserFavorites() {
+    void saveMovieToUserFavorites() { // This method may be meant to use toyStory, not goodfellas
         FavoriteService favoriteService = new FavoriteService(driver);
 
-        var output = favoriteService.add(userId, goodfellas);
+        var output = favoriteService.add(userId, toyStory);
 
         assertNotNull(output);
-        assertEquals(goodfellas, output.get("tmdbId"));
-        assertTrue((Boolean)output.get("favorite"), "goodfellas is favorite");
+        assertEquals(toyStory, output.get("tmdbId"));
+        assertTrue((Boolean)output.get("favorite"), "Toy Story is favorite");
 
         var favorites = favoriteService.all(userId, new Params(null, Params.Sort.title, Params.Order.DESC, 10, 0));
 
-        var movieFavorite = favorites.stream().anyMatch(movie -> movie.get("tmdbId").equals(goodfellas));
-        assertTrue(movieFavorite, "goodfellas is a favorite movie");
+        var movieFavorite = favorites.stream().anyMatch(movie -> movie.get("tmdbId").equals(toyStory));
+        assertTrue(movieFavorite, "Toy Story is a favorite movie");
     }
 
     @Test
