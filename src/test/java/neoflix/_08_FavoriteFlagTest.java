@@ -19,7 +19,7 @@ class _08_FavoriteFlagTest {
     private static Driver driver;
 
     private static String userId;
-    private static final String email = "graphacademy.flag@neo4j.com";
+    private static final String email = "graphacademy.flag@neo4j.com"; // users get an error since this email already exists, might want to remove or change it before this module
 
     @BeforeAll
     static void initDriver() {
