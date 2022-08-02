@@ -42,6 +42,13 @@
             <version>0.9.0</version>
         </dependency>
         <dependency>
+            <!-- Only needed for the AsyncApi examples -->
+            <groupId>io.projectreactor</groupId>
+            <artifactId>reactor-core</artifactId>
+            <version>3.4.21</version>
+            <optional>true</optional>
+        </dependency>
+        <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter</artifactId>
             <version>5.8.2</version>
