@@ -1,39 +1,50 @@
 package neoflix;
 
-import static spark.Spark.*;
-
 import java.util.*;
-import com.google.gson.Gson;
+
+import io.javalin.Javalin;
+import io.javalin.http.staticfiles.Location;
 import neoflix.routes.*;
-import org.neo4j.driver.*;
+
+import static io.javalin.apibuilder.ApiBuilder.path;
 
 public class NeoflixApp {
 
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args) {
         AppUtils.loadProperties();
-        int port = AppUtils.getServerPort();
-        port(port);
-        // tag::driver[]
-        Driver driver = AppUtils.initDriver();
-        // end::driver[]
-        Gson gson = GsonUtils.gson();
 
-        staticFiles.location("/public");
-        String jwtSecret = AppUtils.getJwtSecret();
-        before((req, res) -> AppUtils.handleAuthAndSetUser(req, jwtSecret));
-        path("/api", () -> {
-            path("/movies", new MovieRoutes(driver, gson));
-            path("/genres", new GenreRoutes(driver, gson));
-            path("/auth", new AuthRoutes(driver, gson, jwtSecret));
-            path("/account", new AccountRoutes(driver, gson));
-            path("/people", new PeopleRoutes(driver, gson));
-        });
-        exception(ValidationException.class, (exception, request, response) -> {
-            response.status(422);
-            var body = Map.of("message",exception.getMessage(), "details", exception.getDetails());
-            response.body(gson.toJson(body));
-            response.type("application/json");
-        });
+        // tag::driver[]
+        var driver = AppUtils.initDriver();
+        // end::driver[]
+
+        var jwtSecret = AppUtils.getJwtSecret();
+        var port = AppUtils.getServerPort();
+
+        var gson = GsonUtils.gson();
+        var server = Javalin
+            .create(config -> {
+                config.addStaticFiles("/", Location.CLASSPATH);
+                config.addStaticFiles(staticFiles -> {
+                    staticFiles.hostedPath = "/";
+                    staticFiles.directory = "/public";
+                    staticFiles.location = Location.CLASSPATH;
+                });
+            })
+            .before(ctx -> AppUtils.handleAuthAndSetUser(ctx.req, jwtSecret))
+            .routes(() -> {
+                path("/api", () -> {
+                    path("/movies", new MovieRoutes(driver, gson));
+                    path("/genres", new GenreRoutes(driver, gson));
+                    path("/auth", new AuthRoutes(driver, gson, jwtSecret));
+                    path("/account", new AccountRoutes(driver, gson));
+                    path("/people", new PeopleRoutes(driver, gson));
+                });
+            })
+            .exception(ValidationException.class, (exception, ctx) -> {
+                var body = Map.of("message", exception.getMessage(), "details", exception.getDetails());
+                ctx.status(422).contentType("application/json").result(gson.toJson(body));
+            })
+            .start(port);
         System.out.printf("Server listening on http://localhost:%d/%n", port);
     }
 }
