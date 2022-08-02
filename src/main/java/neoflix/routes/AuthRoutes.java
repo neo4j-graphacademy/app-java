@@ -1,14 +1,14 @@
 package neoflix.routes;
 
 import com.google.gson.Gson;
-import neoflix.AppUtils;
+
+import io.javalin.apibuilder.EndpointGroup;
 import neoflix.services.AuthService;
 import org.neo4j.driver.Driver;
-import spark.RouteGroup;
 
-import static spark.Spark.*;
+import static io.javalin.apibuilder.ApiBuilder.post;
 
-public class AuthRoutes implements RouteGroup {
+public class AuthRoutes implements EndpointGroup {
     private final Gson gson;
     private final AuthService authService;
 
@@ -20,7 +20,7 @@ public class AuthRoutes implements RouteGroup {
     static class UserData { String email, name, password; };
 
     @Override
-    public void addRoutes() {
+    public void addEndpoints() {
         /*
          * @POST /auth/login
          *
@@ -29,14 +29,14 @@ public class AuthRoutes implements RouteGroup {
          * The Authorization header contains a JWT token, which is used to authenticate the request.
          */
         // tag::login[]
-        post("/login", (req, res) -> {
-            UserData userData = gson.fromJson(req.body(), UserData.class);
+        post("/login", ctx -> {
+            var userData = gson.fromJson(ctx.body(), UserData.class);
             var user = authService.authenticate(userData.email, userData.password);
             if (user != null) {
-                req.attribute("user", user.get("userId"));
+                ctx.attribute("user", user.get("userId"));
             }
-            return user;
-        }, gson::toJson);
+            ctx.result(gson.toJson(user));
+        });
         // end::login[]
 
         /*
@@ -48,12 +48,10 @@ public class AuthRoutes implements RouteGroup {
          * `src/passport/jwt.strategy.js` to authenticate the request.
          */
         // tag::register[]
-        post("/register", (req, res) -> {
-            String userId = AppUtils.getUserId(req);
-            UserData userData = gson.fromJson(req.body(), UserData.class);
-
-            return authService.register(userData.email, userData.password, userData.name);
-        }, gson::toJson);
+        post("/register", ctx -> {
+            var userData = gson.fromJson(ctx.body(), UserData.class);
+            ctx.result(gson.toJson(authService.register(userData.email, userData.password, userData.name)));
+        });
         // end::register[]
     }
 }

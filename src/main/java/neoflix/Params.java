@@ -2,9 +2,10 @@ package neoflix;
 
 import static neoflix.Params.Sort.*;
 
-import spark.Request;
+import io.javalin.http.Context;
 
 import java.util.EnumSet;
+import java.util.Optional;
 
 public record Params(String query, Sort sort, Order order, int limit, int skip) {
     public Sort sort(Sort defaultSort) {
@@ -35,12 +36,12 @@ public record Params(String query, Sort sort, Order order, int limit, int skip) 
     public static final EnumSet<Sort> PEOPLE_SORT = EnumSet.of(name, born, movieCount);
     public static final EnumSet<Sort> RATING_SORT = EnumSet.of(rating, timestamp);
 
-    public static Params parse(Request req, EnumSet<Sort> validSort) {
-        String q = req.queryParamsSafe("q");
-        Sort sort = Sort.of(req.queryParamsSafe("sort"));
-        Order order = Order.of(req.queryParamsSafe("order"));
-        int limit = Integer.parseInt(req.queryParamOrDefault("limit", "6"));
-        int skip = Integer.parseInt(req.queryParamOrDefault("skip", "0"));
+    public static Params parse(Context ctx, EnumSet<Sort> validSort) {
+        String q = ctx.queryParam("q");
+        Sort sort = Sort.of(ctx.queryParam("sort"));
+        Order order = Order.of(ctx.queryParam("order"));
+        int limit = Integer.parseInt(Optional.ofNullable(ctx.queryParam("limit")).orElse("6"));
+        int skip = Integer.parseInt(Optional.ofNullable(ctx.queryParam("skip")).orElse("0"));
         // Only accept valid sort fields
         if (!validSort.contains(sort)) {
             sort = validSort.iterator().next();

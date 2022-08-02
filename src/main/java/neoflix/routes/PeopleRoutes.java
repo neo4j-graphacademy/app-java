@@ -1,16 +1,17 @@
 package neoflix.routes;
 
 import com.google.gson.Gson;
+
+import io.javalin.apibuilder.EndpointGroup;
 import neoflix.Params;
 import neoflix.AppUtils;
 import neoflix.services.MovieService;
 import neoflix.services.PeopleService;
 import org.neo4j.driver.Driver;
-import spark.RouteGroup;
 
-import static spark.Spark.get;
+import static io.javalin.apibuilder.ApiBuilder.get;
 
-public class PeopleRoutes implements RouteGroup {
+public class PeopleRoutes implements EndpointGroup {
     private final Gson gson;
     private final PeopleService peopleService;
     private final MovieService movieService;
@@ -22,50 +23,52 @@ public class PeopleRoutes implements RouteGroup {
     }
 
     @Override
-    public void addRoutes() {
+    public void addEndpoints() {
         /*
          * @GET /people/
          *
          * This route should return a paginated list of People from the database
          */
-        get("", (req, res) -> peopleService.all(Params.parse(req, Params.PEOPLE_SORT)), gson::toJson);
+        get("", ctx -> ctx.result(gson.toJson(peopleService.all(Params.parse(ctx, Params.PEOPLE_SORT)))));
 
         /*
-         * @GET /people/:id
+         * @GET /people/{id}
          *
          * This route should the properties of a Person based on their tmdbId
          */
-        get("/:id", (req, res) -> peopleService.findById(req.params(":id")), gson::toJson);
+        get("/{id}", ctx -> ctx.result(gson.toJson(peopleService.findById(ctx.pathParam("id")))));
 
         /*
-         * @GET /people/:id/similar
+         * @GET /people/{id}/similar
          *
          * This route should return a paginated list of similar people to the person
-         * with the :id supplied in the route params.
+         * with the {id} supplied in the route params.
          */
-        get("/:id/similar", (req, res) -> peopleService.getSimilarPeople(req.params(":id"), Params.parse(req, Params.PEOPLE_SORT)), gson::toJson);
+        get("/{id}/similar", ctx -> ctx.result(gson.toJson(peopleService.getSimilarPeople(ctx.pathParam("id"), Params.parse(ctx, Params.PEOPLE_SORT)))));
 
         /*
-         * @GET /people/:id/acted
+         * @GET /people/{id}/acted
          *
          * This route should return a paginated list of movies that the person
-         * with the :id has acted in.
+         * with the {id} has acted in.
          */
-        get("/:id/acted", (req, res) -> {
-            String userId = AppUtils.getUserId(req);
-            return movieService.getForActor(req.params(":id"), Params.parse(req, Params.MOVIE_SORT), userId);
-        }, gson::toJson);
+        get("/{id}/acted", ctx -> {
+            var userId = AppUtils.getUserId(ctx);
+            var movies = movieService.getForActor(ctx.pathParam("id"), Params.parse(ctx, Params.MOVIE_SORT), userId);
+            ctx.result(gson.toJson(movies));
+        });
 
         /*
-         * @GET /people/:id/directed
+         * @GET /people/{id}/directed
          *
          * This route should return a paginated list of movies that the person
-         * with the :id has acted in.
+         * with the {id} has directed.
          */
-        get("/:id/directed", (req, res) -> {
-            String userId = AppUtils.getUserId(req);
-            return movieService.getForDirector(req.params(":id"), Params.parse(req, Params.MOVIE_SORT), userId);
-        }, gson::toJson);
+        get("/{id}/directed", ctx -> {
+            var userId = AppUtils.getUserId(ctx);
+            var movies = movieService.getForDirector(ctx.pathParam("id"), Params.parse(ctx, Params.MOVIE_SORT), userId);
+            ctx.result(gson.toJson(movies));
+        });
     }
 
 }
