@@ -9,6 +9,8 @@ import neoflix.services.FavoriteService;
 import neoflix.services.RatingService;
 import org.neo4j.driver.Driver;
 
+import java.util.Map;
+
 import static io.javalin.apibuilder.ApiBuilder.*;
 
 public class AccountRoutes implements EndpointGroup {
@@ -78,12 +80,12 @@ public class AccountRoutes implements EndpointGroup {
          *
          * This route should create a `:RATING` relationship between the current user
          * and the movie with the {id} parameter.  The rating value will be posted as part
-         * of the post body.
+         * of the post body {"rating": "5"}.
          */
         // tag::rating[]
         post("/ratings/{id}", ctx -> {
             var userId = AppUtils.getUserId(ctx); // TODO
-            var value = Integer.parseInt(ctx.body());
+            var value = Integer.parseInt(gson.fromJson(ctx.body(), Map.class).get("rating").toString());
             var rating = ratingService.add(userId, ctx.pathParam("id"), value);
             ctx.result(gson.toJson(rating));
         });
