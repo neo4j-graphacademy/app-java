@@ -4,6 +4,7 @@ import java.util.*;
 
 import io.javalin.Javalin;
 import io.javalin.http.staticfiles.Location;
+import io.javalin.plugin.json.JsonMapper;
 import neoflix.routes.*;
 
 import static io.javalin.apibuilder.ApiBuilder.path;
@@ -29,15 +30,27 @@ public class NeoflixApp {
                     staticFiles.directory = "/public";
                     staticFiles.location = Location.CLASSPATH;
                 });
+                var jsonMapper = new JsonMapper() {
+                    @Override
+                    public String toJsonString(Object obj) {
+                        return gson.toJson(obj);
+                    }
+
+                    @Override
+                    public <T> T fromJsonString(String json, Class<T> targetClass) {
+                        return gson.fromJson(json, targetClass);
+                    }
+                };
+                config.jsonMapper(jsonMapper);
             })
             .before(ctx -> AppUtils.handleAuthAndSetUser(ctx.req, jwtSecret))
             .routes(() -> {
                 path("/api", () -> {
-                    path("/movies", new MovieRoutes(driver, gson));
-                    path("/genres", new GenreRoutes(driver, gson));
-                    path("/auth", new AuthRoutes(driver, gson, jwtSecret));
-                    path("/account", new AccountRoutes(driver, gson));
-                    path("/people", new PeopleRoutes(driver, gson));
+                    path("/movies", new MovieRoutes(driver));
+                    path("/genres", new GenreRoutes(driver));
+                    path("/auth", new AuthRoutes(driver, jwtSecret));
+                    path("/account", new AccountRoutes(driver));
+                    path("/people", new PeopleRoutes(driver));
                 });
             })
             .exception(ValidationException.class, (exception, ctx) -> {

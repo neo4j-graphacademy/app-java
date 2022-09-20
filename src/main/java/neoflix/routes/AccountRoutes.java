@@ -1,7 +1,5 @@
 package neoflix.routes;
 
-import com.google.gson.Gson;
-
 import io.javalin.apibuilder.EndpointGroup;
 import neoflix.Params;
 import neoflix.AppUtils;
@@ -14,12 +12,10 @@ import java.util.Map;
 import static io.javalin.apibuilder.ApiBuilder.*;
 
 public class AccountRoutes implements EndpointGroup {
-    private final Gson gson;
     private final FavoriteService favoriteService;
     private final RatingService ratingService;
 
-    public AccountRoutes(Driver driver, Gson gson) {
-        this.gson = gson;
+    public AccountRoutes(Driver driver) {
         favoriteService = new FavoriteService(driver);
         ratingService = new RatingService(driver);
     }
@@ -31,7 +27,7 @@ public class AccountRoutes implements EndpointGroup {
          *
          * This route simply returns the claims made in the JWT token
          */
-        get("", ctx -> ctx.result(gson.toJson(ctx.attribute("user"))));
+        get("", ctx -> ctx.json(ctx.attribute("user")));
 
         /*
          * @GET /account/favorites/
@@ -43,7 +39,7 @@ public class AccountRoutes implements EndpointGroup {
         get("/favorites", ctx -> {
             var userId = AppUtils.getUserId(ctx);
             var favorites = favoriteService.all(userId, Params.parse(ctx, Params.MOVIE_SORT));
-            ctx.result(gson.toJson(favorites));
+            ctx.json(favorites);
         });
         // end::list[]
 
@@ -57,7 +53,7 @@ public class AccountRoutes implements EndpointGroup {
         post("/favorites/{id}", ctx -> {
             var userId = AppUtils.getUserId(ctx);
             var newFavorite = favoriteService.add(userId, ctx.pathParam("id"));
-            ctx.result(gson.toJson(newFavorite));
+            ctx.json(newFavorite);
         });
         // end::add[]
 
@@ -71,7 +67,7 @@ public class AccountRoutes implements EndpointGroup {
         delete("/favorites/{id}", ctx -> {
             var userId = AppUtils.getUserId(ctx); // TODO
             var deletedFavorite = favoriteService.remove(userId, ctx.pathParam("id"));
-            ctx.result(gson.toJson(deletedFavorite));
+            ctx.json(deletedFavorite);
         });
         // end::delete[]
 
@@ -85,9 +81,9 @@ public class AccountRoutes implements EndpointGroup {
         // tag::rating[]
         post("/ratings/{id}", ctx -> {
             var userId = AppUtils.getUserId(ctx); // TODO
-            var value = Integer.parseInt(gson.fromJson(ctx.body(), Map.class).get("rating").toString());
+            var value = Integer.parseInt(ctx.bodyAsClass(Map.class).get("rating").toString());
             var rating = ratingService.add(userId, ctx.pathParam("id"), value);
-            ctx.result(gson.toJson(rating));
+            ctx.json(rating);
         });
         // end::rating[]
     }

@@ -1,7 +1,5 @@
 package neoflix.routes;
 
-import com.google.gson.Gson;
-
 import io.javalin.apibuilder.EndpointGroup;
 import neoflix.Params;
 import neoflix.AppUtils;
@@ -12,14 +10,12 @@ import org.neo4j.driver.Driver;
 import static io.javalin.apibuilder.ApiBuilder.get;
 
 public class GenreRoutes implements EndpointGroup {
-    private final Gson gson;
     private final GenreService genreService;
     private final MovieService movieService;
 
-    public GenreRoutes(Driver driver, Gson gson) {
+    public GenreRoutes(Driver driver) {
         genreService = new GenreService(driver); // new GenreServiceFixture();
         movieService = new MovieService(driver);
-        this.gson = gson;
     }
 
     @Override
@@ -30,7 +26,7 @@ public class GenreRoutes implements EndpointGroup {
          * This route should retrieve a full list of Genres from the
          * database along with a poster and movie count.
          */
-        get("", ctx -> ctx.result(gson.toJson(genreService.all())));
+        get("", ctx -> ctx.json(genreService.all()));
 
         /*
          * @GET /genres/{name}
@@ -39,7 +35,7 @@ public class GenreRoutes implements EndpointGroup {
          * that matches the {name} URL parameter.  If the genre is not found,
          * a 404 should be thrown.
          */
-        get("/{name}", ctx -> ctx.result(gson.toJson(genreService.find(ctx.pathParam("name")))));
+        get("/{name}", ctx -> ctx.json(genreService.find(ctx.pathParam("name"))));
 
         /**
          * @GET /genres/{name}/movies
@@ -50,7 +46,7 @@ public class GenreRoutes implements EndpointGroup {
         get("/{name}/movies", ctx -> {
             var userId = AppUtils.getUserId(ctx);
             var movies = movieService.byGenre(ctx.pathParam("name"), Params.parse(ctx, Params.MOVIE_SORT), userId);
-            ctx.result(gson.toJson(movies));
+            ctx.json(movies);
         });
     }
 

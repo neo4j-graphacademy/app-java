@@ -1,7 +1,5 @@
 package neoflix.routes;
 
-import com.google.gson.Gson;
-
 import io.javalin.apibuilder.EndpointGroup;
 import neoflix.Params;
 import neoflix.AppUtils;
@@ -14,12 +12,10 @@ import java.util.Map;
 import static io.javalin.apibuilder.ApiBuilder.get;
 
 public class MovieRoutes implements EndpointGroup {
-    private final Gson gson;
     private final MovieService movieService;
     private final RatingService ratingService;
 
-    public MovieRoutes(Driver driver, Gson gson) {
-        this.gson = gson;
+    public MovieRoutes(Driver driver) {
         // tag::list[]
         movieService = new MovieService(driver);  // <1>
         // end::list[]
@@ -39,7 +35,7 @@ public class MovieRoutes implements EndpointGroup {
             var params = Params.parse(ctx, Params.MOVIE_SORT); // <2>
             String userId = AppUtils.getUserId(ctx);  // <3>
             var movies = movieService.all(params, userId);  // <4>
-            ctx.result(gson.toJson(movies));
+            ctx.json(movies);
         });
         // end::list[]
 
@@ -52,7 +48,7 @@ public class MovieRoutes implements EndpointGroup {
         get("/{id}", ctx -> {
             String userId = AppUtils.getUserId(ctx);
             Map<String, Object> movie = movieService.findById(ctx.pathParam("id"), userId);
-            ctx.result(gson.toJson(movie));
+            ctx.json(movie);
         });
 
         /*
@@ -63,7 +59,7 @@ public class MovieRoutes implements EndpointGroup {
          * the rating itself or when the review was created.
          */
         // tag::ratings[]
-        get("/{id}/ratings", ctx -> ctx.result(gson.toJson(ratingService.forMovie(ctx.pathParam("id"), Params.parse(ctx, Params.RATING_SORT)))));
+        get("/{id}/ratings", ctx -> ctx.json(ratingService.forMovie(ctx.pathParam("id"), Params.parse(ctx, Params.RATING_SORT))));
         // end::ratings[]
 
         /*
@@ -76,7 +72,7 @@ public class MovieRoutes implements EndpointGroup {
         get("/{id}/similar", ctx -> {
             var userId = AppUtils.getUserId(ctx);
             var movies = movieService.getSimilarMovies(ctx.pathParam("id"), Params.parse(ctx, Params.MOVIE_SORT), userId);
-            ctx.result(gson.toJson(movies));
+            ctx.json(movies);
         });
         // end::similar[]
     }

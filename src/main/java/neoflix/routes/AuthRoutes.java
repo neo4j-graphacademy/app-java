@@ -1,7 +1,5 @@
 package neoflix.routes;
 
-import com.google.gson.Gson;
-
 import io.javalin.apibuilder.EndpointGroup;
 import neoflix.services.AuthService;
 import org.neo4j.driver.Driver;
@@ -9,11 +7,9 @@ import org.neo4j.driver.Driver;
 import static io.javalin.apibuilder.ApiBuilder.post;
 
 public class AuthRoutes implements EndpointGroup {
-    private final Gson gson;
     private final AuthService authService;
 
-    public AuthRoutes(Driver driver, Gson gson, String jwtSecret) {
-        this.gson = gson;
+    public AuthRoutes(Driver driver, String jwtSecret) {
         authService = new AuthService(driver, jwtSecret);
     }
 
@@ -30,12 +26,12 @@ public class AuthRoutes implements EndpointGroup {
          */
         // tag::login[]
         post("/login", ctx -> {
-            var userData = gson.fromJson(ctx.body(), UserData.class);
+            var userData = ctx.bodyAsClass(UserData.class);
             var user = authService.authenticate(userData.email, userData.password);
             if (user != null) {
                 ctx.attribute("user", user.get("userId"));
             }
-            ctx.result(gson.toJson(user));
+            ctx.json(user);
         });
         // end::login[]
 
@@ -49,8 +45,8 @@ public class AuthRoutes implements EndpointGroup {
          */
         // tag::register[]
         post("/register", ctx -> {
-            var userData = gson.fromJson(ctx.body(), UserData.class);
-            ctx.result(gson.toJson(authService.register(userData.email, userData.password, userData.name)));
+            var userData = ctx.bodyAsClass(UserData.class);
+            ctx.json(authService.register(userData.email, userData.password, userData.name));
         });
         // end::register[]
     }
