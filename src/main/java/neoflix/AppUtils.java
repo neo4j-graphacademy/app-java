@@ -5,13 +5,16 @@ import org.neo4j.driver.AuthToken;
 import org.neo4j.driver.AuthTokens;
 import org.neo4j.driver.Driver;
 import org.neo4j.driver.GraphDatabase;
-import spark.Request;
+
+import io.javalin.http.Context;
 
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.List;
 import java.util.Map;
 import java.util.function.Function;
+
+import javax.servlet.http.HttpServletRequest;
 
 public class AppUtils {
     public static void loadProperties() {
@@ -23,20 +26,20 @@ public class AppUtils {
         }
     }
 
-    public static String getUserId(Request req) {
-        Object user = req.attribute("user");
+    public static String getUserId(Context ctx) {
+        Object user = ctx.attribute("user");
         if (user == null) return null;
         return user.toString();
     }
 
-    static void handleAuthAndSetUser(Request req, String jwtSecret) {
-        String token = req.headers("Authorization");
+    static void handleAuthAndSetUser(HttpServletRequest request, String jwtSecret) {
+        String token = request.getHeader("Authorization");
         String bearer = "Bearer ";
         if (token != null && !token.isBlank() && token.startsWith(bearer)) {
             // verify token
             token = token.substring(bearer.length());
             String userId = AuthUtils.verify(token, jwtSecret);
-            req.attribute("user", userId);
+            request.setAttribute("user", userId);
         }
     }
 

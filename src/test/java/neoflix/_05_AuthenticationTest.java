@@ -56,7 +56,7 @@ class _05_AuthenticationTest {
             authService.authenticate(email, "unknown");
             fail("incorrect password auth should fail");
         } catch (Exception e) {
-            assertEquals("Cannot retrieve a single record, because this result is empty.", e.getMessage());
+            assertEquals("Incorrect email", e.getMessage());
         }
     }
 
@@ -68,7 +68,7 @@ class _05_AuthenticationTest {
             authService.authenticate("unknown", "unknown");
             fail("Auth with unknown username should fail");
         } catch (Exception e) {
-            assertEquals("Cannot retrieve a single record, because this result is empty.", e.getMessage());
+            assertEquals("Incorrect email", e.getMessage());
         }
     }
 
