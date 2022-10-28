@@ -1,0 +1,133 @@
+[
+  {
+    "languages": [
+      "English"
+    ],
+    "plot": "A twisted take on 'Little Red Riding Hood' with a teenage juvenile delinquent on the run from a social worker traveling to her grandmother's house and being hounded by a charming, but sadistic, serial killer/pedophile.",
+    "year": 1996,
+    "genres": [
+      {
+        "link": "/genres/Drama",
+        "name": "Drama"
+      },
+      {
+        "link": "/genres/Crime",
+        "name": "Crime"
+      },
+      {
+        "link": "/genres/Comedy",
+        "name": "Comedy"
+      },
+      {
+        "link": "/genres/Thriller",
+        "name": "Thriller"
+      }
+    ],
+    "imdbRating": 6.9,
+    "tmdbId": "0116361",
+    "title": "Freeway",
+    "poster": "https://image.tmdb.org/t/p/w440_and_h660_face/m0pAARUq3foDWFsrUmlYDHtNPE9.jpg"
+  },
+  {
+    "languages": [
+      "English"
+    ],
+    "plot": "Atticus Finch, a lawyer in the Depression-era South, defends a black man against an undeserved rape charge, and his kids against prejudice.",
+    "year": 1962,
+    "genres": [
+      {
+        "link": "/genres/Drama",
+        "name": "Drama"
+      }
+    ],
+    "imdbRating": 8.4,
+    "tmdbId": "0056592",
+    "title": "To Kill a Mockingbird",
+    "poster": "https://image.tmdb.org/t/p/w440_and_h660_face/ymbVkjMBqRFNJsxDUKXR27Kqsxa.jpg"
+  },
+  {
+    "languages": [
+      "German",
+      " English",
+      " French",
+      " Turkish",
+      " Hebrew",
+      " Spanish",
+      " Japanese"
+    ],
+    "plot": "An angel tires of overseeing human activity and wishes to become human when he falls in love with a mortal.",
+    "year": 1987,
+    "genres": [
+      {
+        "link": "/genres/Drama",
+        "name": "Drama"
+      },
+      {
+        "link": "/genres/Romance",
+        "name": "Romance"
+      },
+      {
+        "link": "/genres/Fantasy",
+        "name": "Fantasy"
+      }
+    ],
+    "imdbRating": 8.1,
+    "tmdbId": "0093191",
+    "title": "Wings of Desire (Himmel über Berlin, Der)",
+    "poster": "https://image.tmdb.org/t/p/w440_and_h660_face/iZQs2vUeCzvS1KfZJ6uYNCGJBBV.jpg"
+  },
+  {
+    "languages": [
+      "English"
+    ],
+    "plot": "Wallace is used by a criminal penguin in a robbery involving mechanical trousers.",
+    "year": 1993,
+    "genres": [
+      {
+        "link": "/genres/Comedy",
+        "name": "Comedy"
+      },
+      {
+        "link": "/genres/Children",
+        "name": "Children"
+      },
+      {
+        "link": "/genres/Animation",
+        "name": "Animation"
+      },
+      {
+        "link": "/genres/Crime",
+        "name": "Crime"
+      }
+    ],
+    "imdbRating": 8.4,
+    "tmdbId": "0108598",
+    "title": "Wallace & Gromit: The Wrong Trousers",
+    "poster": "https://image.tmdb.org/t/p/w440_and_h660_face/wRTCxYHx1d9diFFmOHQZT7CjdUV.jpg"
+  },
+  {
+    "languages": [
+      "English"
+    ],
+    "plot": "A hack screenwriter writes a screenplay for a former silent-film star who has faded into Hollywood obscurity.",
+    "year": 1950,
+    "genres": [
+      {
+        "link": "/genres/Romance",
+        "name": "Romance"
+      },
+      {
+        "link": "/genres/Film-Noir",
+        "name": "Film-Noir"
+      },
+      {
+        "link": "/genres/Drama",
+        "name": "Drama"
+      }
+    ],
+    "imdbRating": 8.5,
+    "tmdbId": "0043014",
+    "title": "Sunset Blvd. (a.k.a. Sunset Boulevard)",
+    "poster": "https://image.tmdb.org/t/p/w440_and_h660_face/zt8aQ6ksqK6p1AopC5zVTDS9pKT.jpg"
+  }
+]

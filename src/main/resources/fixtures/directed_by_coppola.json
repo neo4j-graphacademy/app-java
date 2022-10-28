@@ -1,0 +1,387 @@
+[
+  {
+    "languages": [
+      "English",
+      " French",
+      " Vietnamese"
+    ],
+    "year": 1979,
+    "imdbId": "0078788",
+    "runtime": 153,
+    "imdbRating": 8.5,
+    "movieId": "1208",
+    "countries": [
+      "USA"
+    ],
+    "imdbVotes": 435120,
+    "title": "Apocalypse Now",
+    "url": "https://themoviedb.org/movie/28",
+    "revenue": 150000000,
+    "tmdbId": "28",
+    "plot": "During the Vietnam War, Captain Willard is sent on a dangerous mission into Cambodia to assassinate a renegade colonel who has set himself up as a god among a local tribe.",
+    "favorite": false,
+    "poster": "https://image.tmdb.org/t/p/w440_and_h660_face/gQB8Y5RCMkv2zwzFHbUJX3kAhvA.jpg",
+    "released": "1979-08-15",
+    "budget": 31500000
+  },
+  {
+    "languages": [
+      "English"
+    ],
+    "year": 1974,
+    "imdbId": "0071360",
+    "runtime": 113,
+    "imdbRating": 7.9,
+    "movieId": "3730",
+    "countries": [
+      "USA"
+    ],
+    "imdbVotes": 72581,
+    "title": "Conversation, The",
+    "url": "https://themoviedb.org/movie/592",
+    "revenue": 4420000,
+    "tmdbId": "592",
+    "plot": "A paranoid, secretive surveillance expert has a crisis of conscience when he suspects that a couple he is spying on will be murdered.",
+    "favorite": false,
+    "poster": "https://image.tmdb.org/t/p/w440_and_h660_face/dhgW1uGaRj8vIgq54VnCP96X7Sv.jpg",
+    "released": "1974-06-01",
+    "budget": 1600000
+  },
+  {
+    "languages": [
+      "English",
+      " Italian"
+    ],
+    "year": 1984,
+    "imdbId": "0087089",
+    "runtime": 127,
+    "imdbRating": 6.5,
+    "movieId": "4690",
+    "countries": [
+      "USA"
+    ],
+    "imdbVotes": 12415,
+    "title": "Cotton Club, The",
+    "url": "https://themoviedb.org/movie/2148",
+    "revenue": 25928721,
+    "tmdbId": "2148",
+    "plot": "The Cotton Club was a famous night club in Harlem. The story follows the people that visited the club, those that ran it, and is peppered with the Jazz music that made it so famous.",
+    "favorite": false,
+    "poster": "https://image.tmdb.org/t/p/w440_and_h660_face/qigf5fWSH1tw7z424UVKg71UIOS.jpg",
+    "released": "1984-12-14",
+    "budget": 58000000
+  },
+  {
+    "languages": [
+      "English",
+      " Romanian",
+      " Greek",
+      " Bulgarian",
+      " Latin"
+    ],
+    "year": 1992,
+    "imdbId": "0103874",
+    "runtime": 128,
+    "imdbRating": 7.5,
+    "movieId": "1339",
+    "countries": [
+      "USA"
+    ],
+    "imdbVotes": 138668,
+    "title": "Dracula (Bram Stoker's Dracula)",
+    "url": "https://themoviedb.org/movie/6114",
+    "revenue": 215862692,
+    "tmdbId": "6114",
+    "plot": "The vampire comes to England to seduce a visitor's fiancee and inflict havoc in the foreign land.",
+    "favorite": false,
+    "poster": "https://image.tmdb.org/t/p/w440_and_h660_face/n39glC4GkBeCbwdenES8ZBodim8.jpg",
+    "released": "1992-11-13",
+    "budget": 40000000
+  },
+  {
+    "languages": [
+      "English"
+    ],
+    "year": 1987,
+    "imdbId": "0093073",
+    "runtime": 111,
+    "imdbRating": 6.4,
+    "movieId": "4111",
+    "countries": [
+      "USA"
+    ],
+    "imdbVotes": 3916,
+    "title": "Gardens of Stone",
+    "url": "https://themoviedb.org/movie/28368",
+    "revenue": 5262047,
+    "tmdbId": "28368",
+    "plot": "A sergeant must deal with his desires to save the lives of young soldiers being sent to Vietnam. Continuously denied the chance to teach the soldiers about his experiences, he settles for trying to help the son of an old army buddy.",
+    "favorite": false,
+    "poster": "https://image.tmdb.org/t/p/w440_and_h660_face/tR8zph4IytVq8dAqrufPiWYuzBE.jpg",
+    "released": "1987-05-08"
+  },
+  {
+    "languages": [
+      "English",
+      " Italian",
+      " Latin"
+    ],
+    "year": 1972,
+    "imdbId": "0068646",
+    "runtime": 175,
+    "imdbRating": 9.2,
+    "movieId": "858",
+    "countries": [
+      "USA"
+    ],
+    "imdbVotes": 1110051,
+    "title": "Godfather, The",
+    "url": "https://themoviedb.org/movie/238",
+    "revenue": 245066411,
+    "tmdbId": "238",
+    "plot": "The aging patriarch of an organized crime dynasty transfers control of his clandestine empire to his reluctant son.",
+    "favorite": false,
+    "poster": "https://image.tmdb.org/t/p/w440_and_h660_face/iVZ3JAcAjmguGPnRNfWFOtLHOuY.jpg",
+    "released": "1972-03-24",
+    "budget": 6000000
+  },
+  {
+    "languages": [
+      "English",
+      " Italian",
+      " Spanish",
+      " Latin",
+      " Sicilian"
+    ],
+    "year": 1974,
+    "imdbId": "0071562",
+    "runtime": 202,
+    "imdbRating": 9,
+    "movieId": "1221",
+    "countries": [
+      "USA"
+    ],
+    "imdbVotes": 756200,
+    "title": "Godfather: Part II, The",
+    "url": "https://themoviedb.org/movie/240",
+    "revenue": 102600000,
+    "tmdbId": "240",
+    "plot": "The early life and career of Vito Corleone in 1920s New York is portrayed while his son, Michael, expands and tightens his grip on his crime syndicate stretching from Lake Tahoe, Nevada to pre-revolution 1958 Cuba.",
+    "favorite": false,
+    "poster": "https://image.tmdb.org/t/p/w440_and_h660_face/amvmeQWheahG3StKwIE1f7jRnkZ.jpg",
+    "released": "1974-12-20",
+    "budget": 13000000
+  },
+  {
+    "languages": [
+      "English",
+      " Italian",
+      " German",
+      " Latin"
+    ],
+    "year": 1990,
+    "imdbId": "0099674",
+    "runtime": 162,
+    "imdbRating": 7.6,
+    "movieId": "2023",
+    "countries": [
+      "USA"
+    ],
+    "imdbVotes": 256626,
+    "title": "Godfather: Part III, The",
+    "url": "https://themoviedb.org/movie/242",
+    "revenue": 136766062,
+    "tmdbId": "242",
+    "plot": "In the midst of trying to legitimize his business dealings in New York and Italy in 1979, aging Mafia don Michael Corleone seeks to avow for his sins while taking a young protégé under his wing.",
+    "favorite": false,
+    "poster": "https://image.tmdb.org/t/p/w440_and_h660_face/1hdm3Axw9LjITbApvAXBbqO58zE.jpg",
+    "released": "1990-12-25",
+    "budget": 54000000
+  },
+  {
+    "languages": [
+      "English",
+      " Spanish"
+    ],
+    "year": 1996,
+    "imdbId": "0116669",
+    "runtime": 113,
+    "imdbRating": 5.7,
+    "movieId": "765",
+    "countries": [
+      "USA"
+    ],
+    "imdbVotes": 45527,
+    "title": "Jack",
+    "url": "https://themoviedb.org/movie/7095",
+    "revenue": 58620973,
+    "tmdbId": "7095",
+    "plot": "Because of an unusual aging disorder that has aged him four times faster than a normal human being, a boy enters the fifth grade for the first time with the appearance of a 40 year old man.",
+    "favorite": false,
+    "poster": "https://image.tmdb.org/t/p/w440_and_h660_face/tgyA4EhIp3XrWCgo2Q12UfJJNba.jpg",
+    "released": "1996-08-09",
+    "budget": 45000000
+  },
+  {
+    "languages": [
+      "English"
+    ],
+    "year": 1989,
+    "imdbId": "0097965",
+    "runtime": 124,
+    "imdbRating": 6.4,
+    "movieId": "4628",
+    "countries": [
+      "USA"
+    ],
+    "imdbVotes": 13266,
+    "title": "New York Stories",
+    "url": "https://themoviedb.org/movie/9686",
+    "tmdbId": "9686",
+    "plot": "A middle-aged artist obsessed with his pretty young assistant, a precocious 12 year old living in a hotel, and a neurotic lawyer with a possessive mother make up three Gotham tales.",
+    "favorite": false,
+    "poster": "https://image.tmdb.org/t/p/w440_and_h660_face/wu4VK8e3T7AkcGcOmAWRkZGTAkh.jpg",
+    "released": "1989-03-10",
+    "budget": 15000000
+  },
+  {
+    "languages": [
+      "English",
+      " German"
+    ],
+    "year": 1981,
+    "imdbId": "0084445",
+    "runtime": 107,
+    "imdbRating": 6.5,
+    "movieId": "6109",
+    "countries": [
+      "USA"
+    ],
+    "imdbVotes": 3690,
+    "title": "One from the Heart",
+    "url": "https://themoviedb.org/movie/41291",
+    "tmdbId": "41291",
+    "plot": "Hank and Frannie don't seem to be able to live together anymore. After a five-year relationship, lustful and dreamy Fanny leaves down-to-earth Hank on the anniversary of their relationship....",
+    "favorite": false,
+    "poster": "https://image.tmdb.org/t/p/w440_and_h660_face/1I3y03S2UiDDJfO1raPm13BWFqv.jpg",
+    "released": "1982-08-06"
+  },
+  {
+    "languages": [
+      "English"
+    ],
+    "year": 1983,
+    "imdbId": "0086066",
+    "runtime": 91,
+    "imdbRating": 7.2,
+    "movieId": "2114",
+    "countries": [
+      "USA",
+      " France"
+    ],
+    "imdbVotes": 55889,
+    "title": "Outsiders, The",
+    "url": "https://themoviedb.org/movie/227",
+    "revenue": 33697647,
+    "tmdbId": "227",
+    "plot": "The rivalry between two gangs, the poor greasers and the rich Socs, only heats up when one gang member kills a member of the other.",
+    "favorite": false,
+    "poster": "https://image.tmdb.org/t/p/w440_and_h660_face/t0dy2Q1j9hlQ8kkt0TzGImYNt2C.jpg",
+    "released": "1983-03-25",
+    "budget": 10000000
+  },
+  {
+    "languages": [
+      "English"
+    ],
+    "year": 1986,
+    "imdbId": "0091738",
+    "runtime": 103,
+    "imdbRating": 6.3,
+    "movieId": "2469",
+    "countries": [
+      "USA"
+    ],
+    "imdbVotes": 26548,
+    "title": "Peggy Sue Got Married",
+    "url": "https://themoviedb.org/movie/10013",
+    "revenue": 41382841,
+    "tmdbId": "10013",
+    "plot": "Peggy Sue faints at a high school reunion. When she wakes up, she finds herself in her own past, just before she finished school.",
+    "favorite": false,
+    "poster": "https://image.tmdb.org/t/p/w440_and_h660_face/nhxj5XmhWeZbWH6LP8IRenyEjbt.jpg",
+    "released": "1986-10-10",
+    "budget": 18000000
+  },
+  {
+    "languages": [
+      "English"
+    ],
+    "year": 1997,
+    "imdbId": "0119978",
+    "runtime": 135,
+    "imdbRating": 7.1,
+    "movieId": "1672",
+    "countries": [
+      "USA",
+      " Germany"
+    ],
+    "imdbVotes": 44743,
+    "title": "Rainmaker, The",
+    "url": "https://themoviedb.org/movie/11975",
+    "revenue": 45916769,
+    "tmdbId": "11975",
+    "plot": "An underdog lawyer takes on a fraudulent Insurance company.",
+    "favorite": false,
+    "poster": "https://image.tmdb.org/t/p/w440_and_h660_face/vK5NZapRWjIIv8Ei9JCjnfY61Bs.jpg",
+    "released": "1997-11-21",
+    "budget": 40000000
+  },
+  {
+    "languages": [
+      "English"
+    ],
+    "year": 1983,
+    "imdbId": "0086216",
+    "runtime": 94,
+    "imdbRating": 7.3,
+    "movieId": "26485",
+    "countries": [
+      "USA",
+      " France"
+    ],
+    "imdbVotes": 23637,
+    "title": "Rumble Fish",
+    "url": "https://themoviedb.org/movie/232",
+    "revenue": 2494480,
+    "tmdbId": "232",
+    "plot": "Rusty James, an absent-minded street thug struggles to live up to his legendary older brother's reputation, and longs for the days when gang warfare was going on.",
+    "favorite": false,
+    "poster": "https://image.tmdb.org/t/p/w440_and_h660_face/t2myZnRyYNCL3S4Q3TzSfwABFIR.jpg",
+    "released": "1983-10-21",
+    "budget": 10000000
+  },
+  {
+    "languages": [
+      "English"
+    ],
+    "year": 1988,
+    "imdbId": "0096316",
+    "runtime": 110,
+    "imdbRating": 6.9,
+    "movieId": "4557",
+    "countries": [
+      "USA"
+    ],
+    "imdbVotes": 11520,
+    "title": "Tucker: The Man and His Dream",
+    "url": "https://themoviedb.org/movie/28176",
+    "revenue": 19652638,
+    "tmdbId": "28176",
+    "plot": "The story of Preston Tucker, the maverick car designer and his ill-fated challenge to the auto industry with his revolutionary car concept.",
+    "favorite": false,
+    "poster": "https://image.tmdb.org/t/p/w440_and_h660_face/vlN4vE8mto1K14Ngv4DVeMWKwIo.jpg",
+    "released": "1988-08-12",
+    "budget": 23000000
+  }
+]

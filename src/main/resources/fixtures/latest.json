@@ -1,0 +1,294 @@
+[
+  {
+    "actors": [
+      {
+        "name": "Robin Williams",
+        "tmdbId":"0000245"
+      },
+      {
+        "name": "Bradley Pierce",
+        "tmdbId":"0682300"
+      },
+      {
+        "name": "Kirsten Dunst",
+        "tmdbId":"0000379"
+      },
+      {
+        "name": "Jonathan Hyde",
+        "tmdbId":"0404993"
+      }
+    ],
+    "languages": [
+      "English",
+      " French"
+    ],
+    "plot": "When two kids find and play a magical board game, they release a man trapped for decades in it and a host of dangers that can only be stopped by finishing the game.",
+    "year": 1995,
+    "genres": [
+      {
+        "link": "/genres/Adventure",
+        "name": "Adventure"
+      },
+      {
+        "link": "/genres/Children",
+        "name": "Children"
+      },
+      {
+        "link": "/genres/Fantasy",
+        "name": "Fantasy"
+      }
+    ],
+    "directors": [
+      {
+        "name": "Joe Johnston",
+        "tmdbId":"0002653"
+      }
+    ],
+    "imdbRating": 6.9,
+    "tmdbId":"0113497",
+    "title": "Jumanji",
+    "poster": "https://image.tmdb.org/t/p/w440_and_h660_face/vgpXmVaVyUL7GGiDeiK1mKEKzcX.jpg"
+  },
+  {
+    "actors": [
+      {
+        "name": "Walter Matthau",
+        "tmdbId":"0000527"
+      },
+      {
+        "name": "Ann-Margret",
+        "tmdbId":"0000268"
+      },
+      {
+        "name": "Jack Lemmon",
+        "tmdbId":"0000493"
+      },
+      {
+        "name": "Sophia Loren",
+        "tmdbId":"0000047"
+      }
+    ],
+    "languages": [
+      "English"
+    ],
+    "plot": "John and Max resolve to save their beloved bait shop from turning into an Italian restaurant, just as its new female owner catches Max's attention.",
+    "year": 1995,
+    "genres": [
+      {
+        "link": "/genres/Comedy",
+        "name": "Comedy"
+      },
+      {
+        "link": "/genres/Romance",
+        "name": "Romance"
+      }
+    ],
+    "directors": [
+      {
+        "name": "Howard Deutch",
+        "tmdbId":"0222043"
+      }
+    ],
+    "imdbRating": 6.6,
+    "tmdbId":"0113228",
+    "title": "Grumpier Old Men",
+    "poster": "https://image.tmdb.org/t/p/w440_and_h660_face/1FSXpj5e8l4KH6nVFO5SPUeraOt.jpg"
+  },
+  {
+    "actors": [
+      {
+        "name": "Whitney Houston",
+        "tmdbId":"0001365"
+      },
+      {
+        "name": "Lela Rochon",
+        "tmdbId":"0005375"
+      },
+      {
+        "name": "Angela Bassett",
+        "tmdbId":"0000291"
+      },
+      {
+        "name": "Loretta Devine",
+        "tmdbId":"0222643"
+      }
+    ],
+    "languages": [
+      "English"
+    ],
+    "plot": "Based on Terry McMillan's novel, this film follows four very different African-American women and their relationships with the male gender.",
+    "year": 1995,
+    "genres": [
+      {
+        "link": "/genres/Romance",
+        "name": "Romance"
+      },
+      {
+        "link": "/genres/Drama",
+        "name": "Drama"
+      },
+      {
+        "link": "/genres/Comedy",
+        "name": "Comedy"
+      }
+    ],
+    "directors": [
+      {
+        "name": "Forest Whitaker",
+        "tmdbId":"0001845"
+      }
+    ],
+    "imdbRating": 5.6,
+    "tmdbId":"0114885",
+    "title": "Waiting to Exhale",
+    "poster": "https://image.tmdb.org/t/p/w440_and_h660_face/4wjGMwPsdlvi025ZqR4rXnFDvBz.jpg"
+  },
+  {
+    "actors": [
+      {
+        "name": "Steve Martin",
+        "tmdbId":"0000188"
+      },
+      {
+        "name": "Kimberly Williams-Paisley",
+        "tmdbId":"0931090"
+      },
+      {
+        "name": "Diane Keaton",
+        "tmdbId":"0000473"
+      },
+      {
+        "name": "Martin Short",
+        "tmdbId":"0001737"
+      }
+    ],
+    "languages": [
+      "English"
+    ],
+    "plot": "In this sequel, George Banks deals not only with the pregnancy of his daughter, but also with the unexpected pregnancy of his wife.",
+    "year": 1995,
+    "genres": [
+      {
+        "link": "/genres/Comedy",
+        "name": "Comedy"
+      }
+    ],
+    "directors": [
+      {
+        "name": "Charles Shyer",
+        "tmdbId":"0796124"
+      }
+    ],
+    "imdbRating": 5.9,
+    "tmdbId":"0113041",
+    "title": "Father of the Bride Part II",
+    "poster": "https://image.tmdb.org/t/p/w440_and_h660_face/lf9RTErt8BSLQy98aSFblElvsCQ.jpg"
+  },
+  {
+    "actors": [
+      {
+        "name": "Al Pacino",
+        "tmdbId":"0000199"
+      },
+      {
+        "name": "Robert De Niro",
+        "tmdbId":"0000134"
+      },
+      {
+        "name": "Val Kilmer",
+        "tmdbId":"0000174"
+      },
+      {
+        "name": "Jon Voight",
+        "tmdbId":"0000685"
+      }
+    ],
+    "languages": [
+      "English",
+      " Spanish"
+    ],
+    "plot": "A group of professional bank robbers start to feel the heat from police when they unknowingly leave a clue at their latest heist.",
+    "year": 1995,
+    "genres": [
+      {
+        "link": "/genres/Action",
+        "name": "Action"
+      },
+      {
+        "link": "/genres/Crime",
+        "name": "Crime"
+      },
+      {
+        "link": "/genres/Thriller",
+        "name": "Thriller"
+      }
+    ],
+    "directors": [
+      {
+        "name": "Michael Mann",
+        "tmdbId":"0000520"
+      }
+    ],
+    "imdbRating": 8.2,
+    "tmdbId":"0113277",
+    "title": "Heat",
+    "poster": "https://image.tmdb.org/t/p/w440_and_h660_face/rrBuGu0Pjq7Y2BWSI6teGfZzviY.jpg"
+  },
+  {
+    "actors": [
+      {
+        "name": "Jim Varney",
+        "tmdbId":"0001815"
+      },
+      {
+        "name": "Tim Allen",
+        "tmdbId":"0000741"
+      },
+      {
+        "name": "Tom Hanks",
+        "tmdbId":"0000158"
+      },
+      {
+        "name": "Don Rickles",
+        "tmdbId":"0725543"
+      }
+    ],
+    "languages": [
+      "English"
+    ],
+    "plot": "A cowboy doll is profoundly threatened and jealous when a new spaceman figure supplants him as top toy in a boy's room.",
+    "year": 1995,
+    "genres": [
+      {
+        "link": "/genres/Adventure",
+        "name": "Adventure"
+      },
+      {
+        "link": "/genres/Animation",
+        "name": "Animation"
+      },
+      {
+        "link": "/genres/Children",
+        "name": "Children"
+      },
+      {
+        "link": "/genres/Comedy",
+        "name": "Comedy"
+      },
+      {
+        "link": "/genres/Fantasy",
+        "name": "Fantasy"
+      }
+    ],
+    "directors": [
+      {
+        "name": "John Lasseter",
+        "tmdbId":"0005124"
+      }
+    ],
+    "imdbRating": 8.3,
+    "tmdbId":"0114709",
+    "title": "Toy Story",
+    "poster": "https://image.tmdb.org/t/p/w440_and_h660_face/uXDfjJbdP4ijW5hWSBrPrlKpxab.jpg"
+  }
+]
