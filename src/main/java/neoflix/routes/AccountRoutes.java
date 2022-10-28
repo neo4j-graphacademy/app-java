@@ -7,8 +7,6 @@ import neoflix.services.FavoriteService;
 import neoflix.services.RatingService;
 import org.neo4j.driver.Driver;
 
-import java.util.Map;
-
 import static io.javalin.apibuilder.ApiBuilder.*;
 
 public class AccountRoutes implements EndpointGroup {
@@ -81,9 +79,9 @@ public class AccountRoutes implements EndpointGroup {
         // tag::rating[]
         post("/ratings/{id}", ctx -> {
             var userId = AppUtils.getUserId(ctx); // TODO
-            var value = Integer.parseInt(ctx.bodyAsClass(Map.class).get("rating").toString());
+            var value = Integer.parseInt(gson.fromJson(ctx.body(), Map.class).get("rating").toString());
             var rating = ratingService.add(userId, ctx.pathParam("id"), value);
-            ctx.json(rating);
+            ctx.result(gson.toJson(rating));
         });
         // end::rating[]
     }
