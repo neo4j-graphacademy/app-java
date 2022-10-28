@@ -2,10 +2,9 @@ package example;
 // tag::import[]
 // Import all relevant classes from neo4j-java-driver dependency
 import neoflix.AppUtils;
+import reactor.core.publisher.Flux;
+import reactor.core.publisher.Mono;
 import org.neo4j.driver.*;
-import org.neo4j.driver.internal.shaded.reactor.core.publisher.Flux;
-import org.neo4j.driver.internal.shaded.reactor.core.publisher.Mono;
-import org.neo4j.driver.reactive.RxResult;
 import org.neo4j.driver.reactive.RxSession;
 // end::import[]
 

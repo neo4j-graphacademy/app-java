@@ -78,7 +78,7 @@ public class AccountRoutes implements EndpointGroup {
          *
          * This route should create a `:RATING` relationship between the current user
          * and the movie with the {id} parameter.  The rating value will be posted as part
-         * of the post body.
+         * of the post body {"rating": "5"}.
          */
         // tag::rating[]
         post("/ratings/{id}", ctx -> {
