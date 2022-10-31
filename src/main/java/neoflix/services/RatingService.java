@@ -44,9 +44,25 @@ public class RatingService {
      */
     // tag::forMovie[]
     public List<Map<String,Object>> forMovie(String id, Params params) {
-        // TODO: Get ratings for a Movie
+        // Open a new database session
+        try (var session = this.driver.session()) {
 
-        return AppUtils.process(ratings,params);
+            // Get ratings for a Movie
+            return session.executeRead(tx -> {
+                String query = String.format("""
+                        MATCH (u:User)-[r:RATED]->(m:Movie {tmdbId: $id})
+                        RETURN r {
+                            .rating,
+                            .timestamp,
+                             user: u { .id, .name }
+                        } AS review
+                        ORDER BY r.`%s` %s
+                        SKIP $skip
+                        LIMIT $limit""", params.sort(Params.Sort.timestamp), params.order());
+                var res = tx.run(query, Values.parameters("id", id, "limit", params.limit(), "skip", params.skip()));
+                return res.list(row -> row.get("review").asMap());
+            });
+        }
     }
     // end::forMovie[]
 
