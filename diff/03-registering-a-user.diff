@@ -1,0 +1,72 @@
+diff --git a/src/main/java/neoflix/services/AuthService.java b/src/main/java/neoflix/services/AuthService.java
+index a5e479a..d8a5487 100644
+--- a/src/main/java/neoflix/services/AuthService.java
++++ b/src/main/java/neoflix/services/AuthService.java
+@@ -4,6 +4,7 @@ import neoflix.AppUtils;
+ import neoflix.AuthUtils;
+ import neoflix.ValidationException;
+ import org.neo4j.driver.Driver;
++import org.neo4j.driver.Values;
+ 
+ import java.util.List;
+ import java.util.Map;
+@@ -46,23 +47,33 @@ public class AuthService {
+     // tag::register[]
+     public Map<String,Object> register(String email, String plainPassword, String name) {
+         var encrypted = AuthUtils.encryptPassword(plainPassword);
+-        // tag::constraintError[]
+-        // TODO: Handle Unique constraints in the database
+-        var foundUser = users.stream().filter(u -> u.get("email").equals(email)).findAny();
+-        if (foundUser.isPresent()) {
+-            throw new RuntimeException("An account already exists with the email address");
+-        }
+-        // end::constraintError[]
+-
+-        // TODO: Save user in database
+-        var user = Map.<String,Object>of("email",email, "name",name,
+-                "userId", String.valueOf(email.hashCode()), "password", encrypted);
+-        users.add(user);
++        // Open a new Session
++        try (var session = this.driver.session()) {
++            // tag::create[]
++            var user = session.executeWrite(tx -> {
++                String statement = """
++                        CREATE (u:User {
++                            userId: randomUuid(),
++                            email: $email,
++                            password: $encrypted,
++                            name: $name
++                    })
++                    RETURN u { .userId, .name, .email } as u""";
++                var res = tx.run(statement, Values.parameters("email", email, "encrypted", encrypted, "name", name));
++                // end::create[]
++                // tag::extract[]
++                // Extract safe properties from the user node (`u`) in the first row
++                return res.single().get("u").asMap();
++                // end::extract[]
+ 
+-        String sub = (String) user.get("userId");
+-        String token = AuthUtils.sign(sub,userToClaims(user), jwtSecret);
++            });
++            String sub = (String)user.get("userId");
++            String token = AuthUtils.sign(sub,userToClaims(user), jwtSecret);
+ 
+-        return userWithToken(user, token);
++            // tag::return-register[]
++            return userWithToken(user, token);
++            // end::return-register[]
++        }
+     }
+     // end::register[]
+ 
+@@ -93,8 +104,8 @@ public class AuthService {
+         if (foundUser.isEmpty())
+             throw new ValidationException("Incorrect email", Map.of("email","Incorrect email"));
+         var user = foundUser.get();
+-        if (!plainPassword.equals(user.get("password")) && 
+-            !AuthUtils.verifyPassword(plainPassword,(String)user.get("password"))) { // 
++        if (!plainPassword.equals(user.get("password")) &&
++            !AuthUtils.verifyPassword(plainPassword,(String)user.get("password"))) { //
+             throw new ValidationException("Incorrect password", Map.of("password","Incorrect password"));
+         }
+         // tag::return[]

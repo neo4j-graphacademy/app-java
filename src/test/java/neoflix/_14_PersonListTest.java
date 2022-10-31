@@ -32,13 +32,13 @@ class _14_PersonListTest {
         var output = peopleService.all(new Params(null, name, Params.Order.ASC, limit, 0));
         assertNotNull(output);
         assertEquals(limit, output.size());
-        assertEquals(" Aaron Woodley", output.get(0).get("name"));
+        assertEquals("'Snub' Pollard", output.get(0).get("name"));
 
         var paginated = peopleService.all(new Params(null, name, Params.Order.ASC, limit, limit));
         assertNotNull(paginated);
         assertEquals(limit, paginated.size());
         assertNotEquals(output, paginated);
-        assertEquals(" Alejandro González Iñárritu", paginated.get(0).get("name"));
+        assertEquals("50 Cent", paginated.get(0).get("name"));
     }
 
     @Test
@@ -51,7 +51,7 @@ class _14_PersonListTest {
         var last = peopleService.all(new Params(q, name, Params.Order.DESC, 1, 0));
         assertNotNull(first);
         assertEquals(1, first.size());
-        assertEquals(" Aaron Woodley", first.get(0).get("name"));
+        assertEquals("'Spring' Mark Adley", first.get(0).get("name"));
         assertNotEquals(first, last);
         assertEquals("Álex Angulo", last.get(0).get("name"));
     }

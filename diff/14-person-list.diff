@@ -1,0 +1,40 @@
+diff --git a/src/main/java/neoflix/services/PeopleService.java b/src/main/java/neoflix/services/PeopleService.java
+index 6fcee1f..a3970eb 100644
+--- a/src/main/java/neoflix/services/PeopleService.java
++++ b/src/main/java/neoflix/services/PeopleService.java
+@@ -38,14 +38,28 @@ public class PeopleService {
+      */
+     // tag::all[]
+     public List<Map<String,Object>> all(Params params) {
+-        // TODO: Get a list of people from the database
+-        if (params.query() != null) {
+-            return AppUtils.process(people.stream()
+-                    .filter(p -> ((String)p.get("name"))
+-                            .contains(params.query()))
+-                    .toList(), params);
++        // Open a new database session
++        try (var session = driver.session()) {
++            // Get a list of people from the database
++            var res = session.executeRead(tx -> {
++                String statement = String.format("""
++                        MATCH (p:Person)
++                        WHERE $q IS null OR p.name CONTAINS $q
++                        RETURN p { .* } AS person
++                        ORDER BY p.`%s` %s
++                        SKIP $skip
++                        LIMIT $limit
++                        """, params.sort(Params.Sort.name), params.order());
++                return tx.run(statement
++                            , Values.parameters("q", params.query(), "skip", params.skip(), "limit", params.limit()))
++                        .list(row -> row.get("person").asMap());
++            });
++
++            return res;
++        } catch(Exception e) {
++            e.printStackTrace();
+         }
+-        return AppUtils.process(people, params);
++        return List.of();
+     }
+     // end::all[]
+ 

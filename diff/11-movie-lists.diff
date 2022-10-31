@@ -1,0 +1,141 @@
+diff --git a/src/main/java/neoflix/services/MovieService.java b/src/main/java/neoflix/services/MovieService.java
+index fdf7591..0938190 100644
+--- a/src/main/java/neoflix/services/MovieService.java
++++ b/src/main/java/neoflix/services/MovieService.java
+@@ -51,7 +51,7 @@ public class MovieService {
+             // Execute a query in a new Read Transaction
+             var movies = session.executeRead(tx -> {
+                 // Get an array of IDs for the User's favorite movies
+-                var favorites = getUserFavorites(tx, userId);
++                var favorites =  getUserFavorites(tx, userId);
+ 
+                 // Retrieve a list of movies with the
+                 // favorite flag appened to the movie's properties
+@@ -156,10 +156,36 @@ public class MovieService {
+      */
+     // tag::getByGenre[]
+     public List<Map<String,Object>> byGenre(String name, Params params, String userId) {
+-        // TODO: Get Movies in a Genre
++        // Get Movies in a Genre
+         // MATCH (m:Movie)-[:IN_GENRE]->(:Genre {name: $name})
+ 
+-        return AppUtils.process(comedyMovies, params);
++        // Open a new session and close at the end
++        try (var session = driver.session()) {
++            // Execute a query in a new Read Transaction
++            return session.executeRead((tx) -> {
++                // Get an array of IDs for the User's favorite movies
++                var favorites = getUserFavorites(tx, userId);
++
++                // Retrieve a list of movies with the
++                // favorite flag append to the movie's properties
++                var result = tx.run(
++                        String.format("""
++                                  MATCH (m:Movie)-[:IN_GENRE]->(:Genre {name: $name})
++                                  WHERE m.`%s` IS NOT NULL
++                                  RETURN m {
++                                    .*,
++                                      favorite: m.tmdbId IN $favorites
++                                  } AS movie
++                                  ORDER BY m.`%s` %s
++                                  SKIP $skip
++                                  LIMIT $limit
++                                """, params.sort(), params.sort(), params.order()),
++                        Values.parameters("skip", params.skip(), "limit", params.limit(),
++                                "favorites", favorites, "name", name));
++                var movies = result.list(row -> row.get("movie").asMap());
++                return movies;
++            });
++        }
+     }
+     // end::getByGenre[]
+ 
+@@ -182,10 +208,37 @@ public class MovieService {
+      */
+     // tag::getForActor[]
+     public List<Map<String,Object>> getForActor(String actorId, Params params,String userId) {
+-        // TODO: Get Movies acted in by a Person
++        // Get Movies acted in by a Person
+         // MATCH (:Person {tmdbId: $id})-[:ACTED_IN]->(m:Movie)
+ 
+-        return AppUtils.process(actedInTomHanks, params);
++        // Open a new session
++        try (var session = this.driver.session()) {
++
++            // Execute a query in a new Read Transaction
++            var movies = session.executeRead(tx -> {
++                // Get an array of IDs for the User's favorite movies
++                var favorites = getUserFavorites(tx, userId);
++                var sort = params.sort(Params.Sort.title);
++
++                // Retrieve a list of movies with the
++                // favorite flag appended to the movie's properties
++                String query = String.format("""
++                          MATCH (:Person {tmdbId: $id})-[:ACTED_IN]->(m:Movie)
++                          WHERE m.`%s` IS NOT NULL
++                          RETURN m {
++                            .*,
++                              favorite: m.tmdbId IN $favorites
++                          } AS movie
++                          ORDER BY m.`%s` %s
++                          SKIP $skip
++                          LIMIT $limit
++                        """, sort, sort, params.order());
++                var res = tx.run(query, Values.parameters("skip", params.skip(), "limit", params.limit(), "favorites", favorites, "id", actorId));
++                // Get a list of Movies from the Result
++                return res.list(row -> row.get("movie").asMap());
++            });
++            return movies;
++        }
+     }
+     // end::getForActor[]
+ 
+@@ -208,10 +261,37 @@ public class MovieService {
+      */
+     // tag::getForDirector[]
+     public List<Map<String,Object>> getForDirector(String directorId, Params params,String userId) {
+-        // TODO: Get Movies directed by a Person
++        // Get Movies acted in by a Person
+         // MATCH (:Person {tmdbId: $id})-[:DIRECTED]->(m:Movie)
+ 
+-        return AppUtils.process(directedByCoppola, params);
++        // Open a new session
++        try (var session = this.driver.session()) {
++
++            // Execute a query in a new Read Transaction
++            var movies = session.executeRead(tx -> {
++                // Get an array of IDs for the User's favorite movies
++                var favorites = getUserFavorites(tx, userId);
++                var sort = params.sort(Params.Sort.title);
++
++                // Retrieve a list of movies with the
++                // favorite flag appended to the movie's properties
++                String query = String.format("""
++                          MATCH (:Person {tmdbId: $id})-[:DIRECTED]->(m:Movie)
++                          WHERE m.`%s` IS NOT NULL
++                          RETURN m {
++                            .*,
++                              favorite: m.tmdbId IN $favorites
++                          } AS movie
++                          ORDER BY m.`%s` %s
++                          SKIP $skip
++                          LIMIT $limit
++                        """, sort, sort, params.order());
++                var res = tx.run(query, Values.parameters("skip", params.skip(), "limit", params.limit(), "favorites", favorites, "id", directorId));
++                // Get a list of Movies from the Result
++                return res.list(row -> row.get("movie").asMap());
++            });
++            return movies;
++        }
+     }
+     // end::getForDirector[]
+ 
+@@ -236,6 +316,4 @@ public class MovieService {
+         return favoriteResult.list(row -> row.get("id").asString());
+     }
+     // end::getUserFavorites[]
+-
+-    record Movie() {} // todo
+-}
++}
+\ No newline at end of file

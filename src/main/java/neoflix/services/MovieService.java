@@ -4,7 +4,7 @@ import neoflix.AppUtils;
 import neoflix.NeoflixApp;
 import neoflix.Params;
 import org.neo4j.driver.Driver;
-import org.neo4j.driver.Transaction;
+import org.neo4j.driver.TransactionContext;
 import org.neo4j.driver.Values;
 
 import java.util.HashMap;
@@ -196,7 +196,7 @@ public class MovieService {
      * @return List<String> movieIds of favorite movies
      */
     // tag::getUserFavorites[]
-    private List<String> getUserFavorites(Transaction tx, String userId) {
+    private List<String> getUserFavorites(TransactionContext tx, String userId) {
         return List.of();
     }
     // end::getUserFavorites[]

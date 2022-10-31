@@ -20,10 +20,6 @@ class _08_FavoriteFlagTest {
     static void initDriver() {
         AppUtils.loadProperties();
         driver = AppUtils.initDriver();
-        if (driver != null) driver.session().executeWrite(tx -> tx.run("""
-                MERGE (u:User {id: $userId})
-                SET u.email = $email
-                """, Values.parameters("userId", userId, "email", email)));
     }
 
     @AfterAll
@@ -35,8 +31,13 @@ class _08_FavoriteFlagTest {
     void setUp() {
         if (driver != null) try (var session = driver.session()) {
             session.executeWrite(tx ->
-                    tx.run("MATCH (u:User {userId: $userId})-[r:HAS_FAVORITE]->(m:Movie) DELETE r",
-                            Values.parameters("userId", userId)));
+                    tx.run("""
+                        MERGE (u:User {userId: $userId})
+                        SET u.email = $email
+
+                        FOREACH (r IN [ (u)-[r:HAS_FAVORITE]->() |r ] | DELETE r)
+                    """,
+                    Values.parameters("userId", userId, "email", email)));
         }
     }
 

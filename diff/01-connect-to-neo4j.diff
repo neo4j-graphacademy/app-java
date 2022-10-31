@@ -1,0 +1,17 @@
+diff --git a/src/main/java/neoflix/AppUtils.java b/src/main/java/neoflix/AppUtils.java
+index e0e6440..e26eb0b 100644
+--- a/src/main/java/neoflix/AppUtils.java
++++ b/src/main/java/neoflix/AppUtils.java
+@@ -45,8 +45,10 @@ public class AppUtils {
+ 
+     // tag::initDriver[]
+     static Driver initDriver() {
+-        // TODO: Create and assign an instance of the driver here
+-        return null;
++        AuthToken auth = AuthTokens.basic(getNeo4jUsername(), getNeo4jPassword());
++        Driver driver = GraphDatabase.driver(getNeo4jUri(), auth);
++        driver.verifyConnectivity();
++        return driver;
+     }
+     // end::initDriver[]
+ 

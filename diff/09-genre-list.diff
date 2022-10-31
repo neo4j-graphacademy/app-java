@@ -1,0 +1,45 @@
+diff --git a/src/main/java/neoflix/services/GenreService.java b/src/main/java/neoflix/services/GenreService.java
+index fcac519..5a6fc96 100644
+--- a/src/main/java/neoflix/services/GenreService.java
++++ b/src/main/java/neoflix/services/GenreService.java
+@@ -34,11 +34,36 @@ public class GenreService {
+      */
+     // tag::all[]
+     public List<Map<String, Object>> all() {
+-        // TODO: Open a new session
+-        // TODO: Get a list of Genres from the database
+-        // TODO: Close the session
++        // Open a new Session, close automatically at the end
++        try (var session = driver.session()) {
++            // Get a list of Genres from the database
++            var query = """
++                    MATCH (g:Genre)
++                    WHERE g.name <> '(no genres listed)'
++                    CALL {
++                      WITH g
++                      MATCH (g)<-[:IN_GENRE]-(m:Movie)
++                      WHERE m.imdbRating IS NOT NULL
++                      AND m.poster IS NOT NULL
++                      RETURN m.poster AS poster
++                      ORDER BY m.imdbRating DESC LIMIT 1
++                    }
++                    RETURN g {
++                      .name,
++                      link: '/genres/'+ g.name,
++                      poster: poster,
++                      movies: size( (g)<-[:IN_GENRE]-() )
++                    } as genre
++                    ORDER BY g.name ASC
++                    """;
++            var genres = session.executeRead(
++                    tx -> tx.run(query)
++                            .list(row ->
++                                row.get("genre").asMap()));
+ 
+-        return genres;
++            // Return results
++            return genres;
++        }
+     }
+     // end::all[]
+ 
