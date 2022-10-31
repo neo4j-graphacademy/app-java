@@ -51,7 +51,7 @@ public class MovieService {
             // Execute a query in a new Read Transaction
             var movies = session.executeRead(tx -> {
                 // Get an array of IDs for the User's favorite movies
-                var favorites =  getUserFavorites(tx, userId);
+                var favorites = getUserFavorites(tx, userId);
 
                 // Retrieve a list of movies with the
                 // favorite flag appened to the movie's properties
