@@ -2,6 +2,7 @@ package neoflix.services;
 
 import neoflix.AppUtils;
 import org.neo4j.driver.Driver;
+import org.neo4j.driver.Values;
 
 import java.util.List;
 import java.util.Map;
@@ -78,15 +79,33 @@ public class GenreService {
      */
     // tag::find[]
     public Map<String,Object> find(String name) {
-        // TODO: Open a new session
-        // TODO: Get Genre information from the database
-        // TODO: Throw a 404 Error if the genre is not found
-        // TODO: Close the session
+        // Open a new Session, close automatically at the end
+        try (var session = driver.session()) {
+            // Get a list of Genres from the database
+            var query = """
+                    MATCH (g:Genre {name: $name})<-[:IN_GENRE]-(m:Movie)
+                    WHERE m.imdbRating IS NOT NULL
+                    AND m.poster IS NOT NULL
+                    AND g.name <> '(no genres listed)'
+                    WITH g, m
+                    ORDER BY m.imdbRating DESC
 
-        return genres.stream()
-                .filter(genre -> genre.get("name").equals(name))
-                .findFirst()
-                .orElseThrow(() -> new RuntimeException("Genre "+name+" not found"));
+                    WITH g, head(collect(m)) AS movie
+
+                    RETURN g {
+                      link: '/genres/'+ g.name,
+                      .name,
+                      movies: size((g)<-[:IN_GENRE]-()),
+                      poster: movie.poster
+                    } AS genre
+                  """;
+            var genre = session.executeRead(
+                    tx -> tx.run(query, Values.parameters("name", name))
+                            // Throw a NoSuchRecordException if the genre is not found
+                            .single().get("genre").asMap());
+            // Return results
+            return genre;
+        }
     }
     // end::find[]
 }
