@@ -4,6 +4,7 @@ import neoflix.AppUtils;
 import neoflix.NeoflixApp;
 import neoflix.Params;
 import org.neo4j.driver.Driver;
+import org.neo4j.driver.Transaction;
 import org.neo4j.driver.TransactionContext;
 import org.neo4j.driver.Values;
 
@@ -49,6 +50,9 @@ public class MovieService {
             // tag::allcypher[]
             // Execute a query in a new Read Transaction
             var movies = session.executeRead(tx -> {
+                // Get an array of IDs for the User's favorite movies
+                var favorites = getUserFavorites(tx, userId);
+
                 // Retrieve a list of movies with the
                 // favorite flag appened to the movie's properties
                 Params.Sort sort = params.sort(Params.Sort.title);
@@ -56,13 +60,14 @@ public class MovieService {
                     MATCH (m:Movie)
                     WHERE m.`%s` IS NOT NULL
                     RETURN m {
-                      .*
+                      .*,
+                      favorite: m.tmdbId IN $favorites
                     } AS movie
                     ORDER BY m.`%s` %s
                     SKIP $skip
                     LIMIT $limit
                     """, sort, sort, params.order());
-                var res= tx.run(query, Values.parameters( "skip", params.skip(), "limit", params.limit()));
+                var res= tx.run(query, Values.parameters( "skip", params.skip(), "limit", params.limit(), "favorites",favorites));
                 // tag::allmovies[]
                 // Get a list of Movies from the Result
                 return res.list(row -> row.get("movie").asMap());
@@ -221,7 +226,14 @@ public class MovieService {
      */
     // tag::getUserFavorites[]
     private List<String> getUserFavorites(TransactionContext tx, String userId) {
-        return List.of();
+        // If userId is not defined, return an empty list
+        if (userId == null) return List.of();
+        var favoriteResult =  tx.run("""
+                    MATCH (u:User {userId: $userId})-[:HAS_FAVORITE]->(m)
+                    RETURN m.tmdbId AS id
+                """, Values.parameters("userId",userId));
+        // Extract the `id` value returned by the cypher query
+        return favoriteResult.list(row -> row.get("id").asString());
     }
     // end::getUserFavorites[]
 
