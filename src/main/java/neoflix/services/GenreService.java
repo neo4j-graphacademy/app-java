@@ -52,7 +52,7 @@ public class GenreService {
                       .name,
                       link: '/genres/'+ g.name,
                       poster: poster,
-                      movies: size( (g)<-[:IN_GENRE]-() )
+                      movies: count { (g)<-[:IN_GENRE]-() }
                     } as genre
                     ORDER BY g.name ASC
                     """;
