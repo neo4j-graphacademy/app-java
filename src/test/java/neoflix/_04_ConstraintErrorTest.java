@@ -37,7 +37,7 @@ class _04_ConstraintErrorTest {
 
     /*
      * If this error fails, try running the following query in your Sandbox to create the unique constraint
-     *   CREATE CONSTRAINT UserEmailUnique ON ( user:User ) ASSERT (user.email) IS UNIQUE
+     *   CREATE CONSTRAINT UserEmailUnique FOR ( user:User ) REQUIRE (user.email) IS UNIQUE
      */
     @Test
     void findUniqueConstraint() {
@@ -45,11 +45,13 @@ class _04_ConstraintErrorTest {
         try (var session = driver.session()) {
             session.executeRead(tx -> {
                 var constraint = tx.run("""
-                        CALL db.constraints()
-                        YIELD name, description
-                        WHERE description = 'CONSTRAINT ON ( user:User ) ASSERT (user.email) IS UNIQUE'
-                        RETURN *
-                        """);
+                    SHOW CONSTRAINTS
+                    YIELD name, type, labelsOrTypes, properties
+                    WHERE type = 'UNIQUENESS'
+                    AND 'User' IN labelsOrTypes
+                    AND 'email' IN properties
+                    RETURN name
+                """);
                 assertNotNull(constraint);
                 assertEquals(1, constraint.stream().count(), "Found unique constraint");
                 return null;
